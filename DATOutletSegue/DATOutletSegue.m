@@ -57,6 +57,7 @@
             type = [type substringWithRange:NSMakeRange(3, type.length - 4)];
             id cls = NSClassFromString(type);
             if ([cls isSubclassOfClass:[UIViewController class]]){
+                
                 @try {
                     [self performSegueWithIdentifier:name sender:self];
                     NSLog(@"Loaded %@", name);

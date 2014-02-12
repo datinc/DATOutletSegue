@@ -15,5 +15,6 @@
 @interface UIViewController (OutletSegue)
 -(void) loadSegueControllers;
 +(NSSet*) excludePropertiesFromLoadSegueControllers;
++(NSInteger) arrayPropertyListLength:(NSString*) propertyName;
 
 @end
