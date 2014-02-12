@@ -11,6 +11,7 @@ Steps to implement
 4. Call [self loadSegueControllers] in viewDidLoad
 
 Arrays are now supported. To connect a controller to an array the segue identifier should be "<name of peropert>-<index>"
+
 Example: viewControllers-0, viewControllers-1.
 
 Note: If you have a breakpoint for all excpetions, then the array implementation will throw an exception (that is caught). This is because I have not found a way to detect if the controller can support the segue without calling performSegueWithIdentifier:sender:. To prevent this exception from being called you can implenent the function +arrayPropertyListLength: and return the length of the array. 
