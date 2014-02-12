@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D137703E18AC3F5C009B835B /* DATOutletSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = D137703D18AC3F5C009B835B /* DATOutletSegue.m */; };
 		D18CB1BE18A2E961004F02C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D18CB1BD18A2E961004F02C5 /* Foundation.framework */; };
 		D18CB1C018A2E961004F02C5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D18CB1BF18A2E961004F02C5 /* CoreGraphics.framework */; };
 		D18CB1C218A2E961004F02C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D18CB1C118A2E961004F02C5 /* UIKit.framework */; };
@@ -21,7 +22,6 @@
 		D18CB1DF18A2E961004F02C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D18CB1C118A2E961004F02C5 /* UIKit.framework */; };
 		D18CB1E718A2E961004F02C5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D18CB1E518A2E961004F02C5 /* InfoPlist.strings */; };
 		D18CB1E918A2E961004F02C5 /* DATOutletSegueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D18CB1E818A2E961004F02C5 /* DATOutletSegueTests.m */; };
-		D18CB1F418A2E9C3004F02C5 /* DATOutletSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = D18CB1F318A2E9C3004F02C5 /* DATOutletSegue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D137703C18AC3F5C009B835B /* DATOutletSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DATOutletSegue.h; path = ../../DATOutletSegue/DATOutletSegue.h; sourceTree = "<group>"; };
+		D137703D18AC3F5C009B835B /* DATOutletSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DATOutletSegue.m; path = ../../DATOutletSegue/DATOutletSegue.m; sourceTree = "<group>"; };
 		D18CB1BA18A2E961004F02C5 /* DATOutletSegue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DATOutletSegue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D18CB1BD18A2E961004F02C5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D18CB1BF18A2E961004F02C5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -54,8 +56,6 @@
 		D18CB1E418A2E961004F02C5 /* DATOutletSegueTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DATOutletSegueTests-Info.plist"; sourceTree = "<group>"; };
 		D18CB1E618A2E961004F02C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D18CB1E818A2E961004F02C5 /* DATOutletSegueTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DATOutletSegueTests.m; sourceTree = "<group>"; };
-		D18CB1F218A2E9C3004F02C5 /* DATOutletSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DATOutletSegue.h; sourceTree = "<group>"; };
-		D18CB1F318A2E9C3004F02C5 /* DATOutletSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DATOutletSegue.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +120,8 @@
 				D18CB1CF18A2E961004F02C5 /* Main.storyboard */,
 				D18CB1D218A2E961004F02C5 /* ViewController.h */,
 				D18CB1D318A2E961004F02C5 /* ViewController.m */,
-				D18CB1F218A2E9C3004F02C5 /* DATOutletSegue.h */,
-				D18CB1F318A2E9C3004F02C5 /* DATOutletSegue.m */,
+				D137703C18AC3F5C009B835B /* DATOutletSegue.h */,
+				D137703D18AC3F5C009B835B /* DATOutletSegue.m */,
 				D18CB1D518A2E961004F02C5 /* Images.xcassets */,
 				D18CB1C418A2E961004F02C5 /* Supporting Files */,
 			);
@@ -256,7 +256,7 @@
 			files = (
 				D18CB1D418A2E961004F02C5 /* ViewController.m in Sources */,
 				D18CB1CE18A2E961004F02C5 /* AppDelegate.m in Sources */,
-				D18CB1F418A2E9C3004F02C5 /* DATOutletSegue.m in Sources */,
+				D137703E18AC3F5C009B835B /* DATOutletSegue.m in Sources */,
 				D18CB1CA18A2E961004F02C5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
