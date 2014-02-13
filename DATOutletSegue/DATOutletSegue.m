@@ -36,62 +36,66 @@
 @end
 
 @implementation UIViewController (OutletSegue)
-
 -(void) loadSegueControllers{
     
     unsigned int propertiesCount;
-    objc_property_t *classPropertiesArray = class_copyPropertyList([self class], &propertiesCount);
+    
     
     NSSet* excludePropertiesFromLoadSegueControllers = [[self class] excludePropertiesFromLoadSegueControllers];
     
-    for (unsigned int ii = 0; ii < propertiesCount; ii++){
-        objc_property_t property = classPropertiesArray[ii];
-        NSArray *attrPairs = [[NSString stringWithUTF8String: property_getAttributes(property)] componentsSeparatedByString: @","];
-        NSString* name = [NSString stringWithUTF8String: property_getName(property)];
-        if ([excludePropertiesFromLoadSegueControllers containsObject:name]){
-            continue;
-        }
+    Class cls = [self class];
+    
+    do {
+        objc_property_t *classPropertiesArray = class_copyPropertyList(cls, &propertiesCount);
         
-        NSString* type = [attrPairs firstObject];
-        if ([type hasPrefix:@"T@"]){
-            type = [type substringWithRange:NSMakeRange(3, type.length - 4)];
-            id cls = NSClassFromString(type);
-            if ([cls isSubclassOfClass:[UIViewController class]]){
-                
-                @try {
-                    [self performSegueWithIdentifier:name sender:self];
-                    NSLog(@"Loaded %@", name);
-                }
-                @catch (NSException *exception) {
-                    
-                }
-                @finally {
-                    
-                }
-            } else if ([cls isSubclassOfClass:[NSArray class]]){
-                
-                NSInteger listSize = [[self class] arrayPropertyListLength:name];
-                NSInteger ii = 0;
-                @try {
-                    for (ii = 0; ii < listSize; ii++){
-                        NSString* arrayName = [name stringByAppendingFormat:@"-%d", (int)ii];
-                        // This will cause an exception if we have loaded all the controllers
-                        // This is to be expected.
-                        // If you do not want to see this exception anymore then implment the function +arrayPropertyListLength: to return a value other then NSNotFound
-                        [self performSegueWithIdentifier:arrayName sender:self];
+        for (unsigned int ii = 0; ii < propertiesCount; ii++){
+            objc_property_t property = classPropertiesArray[ii];
+            NSArray *attrPairs = [[NSString stringWithUTF8String: property_getAttributes(property)] componentsSeparatedByString: @","];
+            NSString* name = [NSString stringWithUTF8String: property_getName(property)];
+            if ([excludePropertiesFromLoadSegueControllers containsObject:name]){
+                continue;
+            }
+            
+            NSString* type = [attrPairs firstObject];
+            if ([type hasPrefix:@"T@\""]){
+                type = [type substringWithRange:NSMakeRange(3, type.length - 4)];
+                id cls = NSClassFromString(type);
+                if ([cls isSubclassOfClass:[UIViewController class]]){
+                    @try {
+                        [self performSegueWithIdentifier:name sender:self];
+                        NSLog(@"Loaded %@", name);
                     }
-                }@catch (NSException *exception) {
-                    if (listSize != NSNotFound){
-                        @throw exception;
+                    @catch (NSException *exception) {
+                        
                     }
-                }
-                if (ii > 0){
-                    NSLog(@"Loaded %d for %@", (int)ii , name);
+                    @finally {
+                        
+                    }
+                } else if ([cls isSubclassOfClass:[NSArray class]]){
+                    
+                    NSInteger ii = 0;
+                    @try {
+                        while (YES) {
+                            NSString* arrayName = [name stringByAppendingFormat:@"-%d", (int)ii];
+                            [self performSegueWithIdentifier:arrayName sender:self];
+                            ii+=1;
+                        }
+                    }
+                    @catch (NSException *exception) {
+                        if (ii > 0){
+                            NSLog(@"Loaded %d for %@", (int)ii , name);
+                        }
+                    }
+                    @finally {
+                        
+                    }
+                    
                 }
             }
         }
-    }
-    free(classPropertiesArray);
+        free(classPropertiesArray);
+        cls = class_getSuperclass(cls);
+    } while (cls);
 }
 
 +(NSSet*) excludePropertiesFromLoadSegueControllers{
